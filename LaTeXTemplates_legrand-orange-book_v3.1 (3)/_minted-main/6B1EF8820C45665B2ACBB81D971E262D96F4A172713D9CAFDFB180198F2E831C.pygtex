@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	    \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{removeAt}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{index}\PYG{p}{)\PYGZob{}}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{index}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{o}{||}\PYG{n}{index}\PYG{o}{\PYGZgt{}=}\PYG{n}{count}\PYG{p}{)\PYGZob{}}
+               \PYG{k}{throw} \PYG{k}{new} \PYG{n}{IllegalArgumentException}\PYG{p}{();}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{else}\PYG{p}{\PYGZob{}}
+                \PYG{c+c1}{//[10,20,30,40]}
+                \PYG{c+c1}{// index:1}
+                \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{n}{index}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{count}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+                \PYG{n}{items}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]=}\PYG{n}{items}\PYG{o}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}
+                \PYG{p}{\PYGZcb{}}
+                \PYG{n}{count}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{indexOf}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{item}\PYG{p}{)\PYGZob{}}
+        \PYG{c+c1}{//获取元素的位置}
+        \PYG{c+c1}{//肯定是有可能遍历完整个都没有存在的}
+        \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{count}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{items}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]==}\PYG{n}{item}\PYG{p}{)\PYGZob{}}
+                \PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
