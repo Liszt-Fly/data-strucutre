@@ -8,7 +8,11 @@ public class Main {
         LinkedList<Integer>linkedList=new LinkedList<>();
         linkedList.addFirst(10);
         linkedList.addFirst(10);
-        linkedList.addFirst(10);linkedList.addLast(29);
+        linkedList.addFirst(10);
+        System.out.println(linkedList.indexOf(10));
+        System.out.println(linkedList.contains(10));
+        System.out.println(linkedList.isEmpty());
+        linkedList.addLast(29);
         System.out.println(linkedList);
         System.out.println("---------------");
         MikeLinkedList mikeLinkedList=new MikeLinkedList();

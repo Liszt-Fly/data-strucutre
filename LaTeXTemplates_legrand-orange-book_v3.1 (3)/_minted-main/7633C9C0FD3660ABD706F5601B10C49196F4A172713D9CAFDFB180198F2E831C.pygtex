@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Node} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{public} \PYG{n+nf}{Node}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{this}\PYG{p}{.}\PYG{n+na}{value}\PYG{o}{=}\PYG{n}{value}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{;}\PYG{c+c1}{//当前节点的值}
+    \PYG{k+kd}{public} \PYG{n}{Node} \PYG{n}{next}\PYG{p}{;}\PYG{c+c1}{//指向下一个节点的指针}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

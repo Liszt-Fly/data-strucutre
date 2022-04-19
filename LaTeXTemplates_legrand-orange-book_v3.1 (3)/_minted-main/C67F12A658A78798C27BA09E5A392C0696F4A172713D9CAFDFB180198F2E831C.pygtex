@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{n}{Node} \PYG{n+nf}{getPrevious}\PYG{p}{(}\PYG{n}{Node} \PYG{n}{node}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{var} \PYG{n}{current} \PYG{o}{=} \PYG{n}{First}\PYG{p}{;}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{current} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{current}\PYG{p}{.}\PYG{n+na}{next} \PYG{o}{==} \PYG{n}{node}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{k}{return} \PYG{n}{current}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{current} \PYG{o}{=} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{next}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{k+kc}{null}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

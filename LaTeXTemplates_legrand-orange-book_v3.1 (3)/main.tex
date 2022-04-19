@@ -140,6 +140,239 @@ public class MArray {
     }
 \end{minted}
 
+\chapter{LinkedList}
+\section{Overview of LinkedList}
+链表是由一串节点(Node)连接而成,这个节点由两部分组成，一部分是数据Data,另外一部分是指针Pointer,每一个Node的指针都指向了下一个节点。
+一般的链表具有头节点，当然也有的具有尾节点，除了一般的单向链表，还有一种双向链表，在双向链表中每一个节点都具有两个指针，一个指向之前的节点，一个指向了之后的节点。但是总体上来说，链表的结构都大同小异。
+
+\begin{center}
+	\includegraphics[scale=0.8]{Images/linked-list.jpg}
+\end{center}
+\section{LinkedList In Java}
+在Java中就有LinkedList，常用的方法有:
+\begin{itemize}
+	\item addFirst 在链表首添加元素
+	\item addLast 在链表尾部添加元素
+	\item contains 是否包含元素
+	\item isEmpty 判断链表是否为空
+	\item indexOf 返回链表中某一元素的位置
+\end{itemize}
+这些方法都是由Java内部进行实现的，我们直接引入LinkedList这个类即可直接使用，当然在下一节中，我们将开始写属于我们自己的链表(MikeLinkedList)。
+
+\begin{minted}[]{java}
+        LinkedList<Integer>linkedList=new LinkedList<>();
+        linkedList.addFirst(10);
+        linkedList.addFirst(10);
+        linkedList.addFirst(10);
+        System.out.println(linkedList.indexOf(10));
+        System.out.println(linkedList.contains(10));
+        System.out.println(linkedList.isEmpty());
+        linkedList.addLast(29);
+        System.out.println(linkedList);
+\end{minted}
+
+\section{MikeLinkedList的搭建1:完成Node Class的实现与MikeLInkedList的基础}
+在第一节中我们说明了链表是由一个一个节点组成的，所以首先实现一个Node Class(Integer整型)，使用整数进行示范，不设置为泛型。
+\begin{minted}[]{java}
+public class Node {
+    public Node(int value){
+        this.value=value;
+    }
+
+    public int value;//当前节点的值
+    public Node next;//指向下一个节点的指针
+}
+\end{minted}
+然后完成MikeLinkedList的搭建，这个链表首先要两个节点，一个是首节点，一个是尾节点，还需要设置一个size属性，记录链表的长度。
+\begin{minted}[]{java}
+public class MikeLinkedList{
+	//头节点p
+	private Node First;
+	private Ndoe Last;
+	private int Size;
+}
+\end{minted}
+
+\section{MikeLinkedList的搭建2:实现具体的方法}
+在实现过程中，要考虑极限情况，没有元素的时候，只有一个元素的时候。
+\subsection{addFirst}
+实现方法很简单，新建一个节点，将它标记为头节点，然后把它的next指针指向原本的头节点即可，算法复杂度$O_n=1$
+\begin{minted}{java}
+  public void addFirst(int value) {
+        var node = new Node(value);
+        //当前链表是否为空
+        if (isEmpty()) {
+            First = Last = node;
+        } else {
+            var temp = First;
+            First = node;
+            First.next = temp;
+            size++;
+        }
+
+    }
+\end{minted}
+\subsection{addLast}
+addLast方法也非常简单，只需要设置将最后一个节点的next指向新节点，然后将Last标记为最后一个节点即可，算法复杂度为$O_n=1$
+\begin{minted}{java}
+	public void addLast(int value) {
+        var node = new Node(value);
+        if (isEmpty()) {
+            First = Last = node;
+        } else {
+            Last.next = node;
+            Last = node;
+
+        }
+        size++;
+    }
+\end{minted}
+\subsection{isEmpty}
+isEmpty只需要判断头节点是否为空，如果为空的话就说明这个链表为空，非常简单
+\begin{minted}{java}
+private boolean isEmpty() {
+        return First == null;
+    }
+\end{minted}
+\subsection{indexOf}
+实现indexOf方法只需要从链表头开始遍历，直到发现某个节点的value和目标节点的value是一样的，如果一样就返回对应的index，如果遍历完整个链表都没有发现目标，则返回-1。由于在最坏的情况需要完整遍历一遍链表，所以算法复杂度为$O_n=n$。
+\begin{minted}{java}
+    public int indexOf(int value) {
+        if (isEmpty()) {
+            return -1;
+        } else {
+            var cur = First;
+            var index = 0;
+            while (cur != null) {
+                if (cur.value == value) {
+                    return index;
+                }
+                index++;
+                cur = cur.next;
+            }
+        }
+        return -1;
+    }
+\end{minted}
+\subsection{contains}
+contains方法的实现在indexOf写过之后就变得非常简单，只需要执行一次indexOf方法，如果返回的是-1,则表示不包含，返回false，否则返回true
+\begin{minted}{java}
+    public boolean contains(int value) {
+        return indexOf(value) != -1;
+    }
+\end{minted}
+\subsection{removeFirst}
+removeFirst方法的核心是将第二个节点设置为First,然后将第一个节点解除关联。
+\begin{minted}{java}
+    public void removeFirst() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        if (First.next == null) {
+            First = Last = null;
+            return;
+        } else {
+            var second = First.next;
+            First.next = null;
+            First = second;
+        }
+        size--;
+    }
+\end{minted}
+\subsection{removeLast}
+要实现removeLast稍微比removeFirst难一些，因为我们的思路应该还是找到Last之前的那个节点，然后把最后一个节点引用解除，设置倒数第二个节点为Last即可。但是如何获取倒数第二个节点？我们可以先写一个getPrevious的函数，然后再写这个函数
+\begin{minted}{java}
+    public Node getPrevious(Node node) {
+        var current = First;
+        while (current != null) {
+            if (current.next == node) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+\end{minted}
+\begin{minted}{java}
+    public void removeLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else if (First == Last) {
+            First = Last = null;
+        } else {
+            var previous = getPrevious(Last);
+            Last = previous;
+            Last.next = null;
+        }
+        size--;
+    }
+\end{minted}
+\subsection{toArray}
+将链表转为数组，方法很简单，遍历一遍，把链表的元素装数组里即可
+\begin{minted}{java}
+    public int[] toArray() {
+        int[] array = new int[size];
+        var cur = First;
+        var index = 0;
+        while (cur != null) {
+            array[index] = cur.value;
+            cur = cur.next;
+            index++;
+        }
+        return array;
+    }
+\end{minted}
+\subsection{练习题1:反转链表}
+\begin{example}
+	将链表反转，比如10->20->30->40->50反转为50->40->30->20->10。
+	仔细思考，该题并不难，我们发现其实就是将链表的箭头顺序反转了，本质上就是10<-20<-30<-40<-50,每一个指针都指向了之前的指针，所以我们只需要构造一个previous指针指向前一个节点即可
+	\begin{minted}{java}
+	    public void reverse() {
+        //first second
+        //previous current
+        var previous = First;
+        var current = First.next;
+        Last = First;
+        Last.next = null;
+        while (current != null) {
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+
+        }
+        First = previous;
+
+    }
+\end{minted}
+\end{example}
+\section{练习题2:寻找倒数第K个链表节点}
+\begin{example}
+	题目要求不允许直接遍历一整遍链表，然后获取对应的节点，我们使用快慢双指针来解决问题：快指针在一开始的时候就进行向前推进，当推进了K步之后慢指针开始运行，当快指针遍历完链表的时候，慢指针指向的节点就是对应的倒数第K个节点。
+\end{example}
+\begin{minted}{java}
+    public int getKthFromTheEnd(int k) {
+        if (isEmpty()) {
+            throw new IllegalStateException();
+        }
+        if (k > size || k <= 0) {
+            throw new IllegalArgumentException();
+        }
+        //声明快指针
+        var a = First;
+        //声明慢指针
+        var b = First;
+        for (int i = 0; i < k - 1; i++) {
+            //先让a走k步
+            a = a.next;
+        }
+        while (a != Last) {
+            a = a.next;
+            b = b.next;
+        }
+        return b.value;
+    }
+\end{minted}
 \part{Part One Title}
 
 %----------------------------------------------------------------------------------------
@@ -367,8 +600,8 @@ This is an example of a remark.
 \begin{example} % Specify a name/title in square brackets, or leave them out for no title
 	Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
 	\begin{equation}
-		f(x)=\left\{\begin{aligned}                                                                                     & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
-                                                                                                    & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
+		f(x)=\left\{\begin{aligned}                                                                                                                                                                  & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
+                                                                                                                                                                                 & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
 	\end{equation}
 	The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\mathopen{]}0\,;5/2-\sqrt{2}\mathclose{[}$.
 \end{example}

@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{addFirst}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{var} \PYG{n}{node} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Node}\PYG{p}{(}\PYG{n}{value}\PYG{p}{);}
+        \PYG{c+c1}{//当前链表是否为空}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{isEmpty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+            \PYG{n}{First} \PYG{o}{=} \PYG{n}{Last} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{k+kd}{var} \PYG{n}{temp} \PYG{o}{=} \PYG{n}{First}\PYG{p}{;}
+            \PYG{n}{First} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+            \PYG{n}{First}\PYG{p}{.}\PYG{n+na}{next} \PYG{o}{=} \PYG{n}{temp}\PYG{p}{;}
+            \PYG{n}{size}\PYG{o}{++}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{addLast}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{var} \PYG{n}{node} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Node}\PYG{p}{(}\PYG{n}{value}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{isEmpty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+            \PYG{n}{First} \PYG{o}{=} \PYG{n}{Last} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Last}\PYG{p}{.}\PYG{n+na}{next} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+            \PYG{n}{Last} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{size}\PYG{o}{++}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
