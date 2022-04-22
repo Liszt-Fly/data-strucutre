@@ -13,6 +13,7 @@ public class Main {
         System.out.println(stack);
         System.out.println(stack.pop());
         System.out.println(stack.peek());
+        System.out.println(stack.empty());
         String str = "Hello,World";
         System.out.println(reverseString(str));
         var string = new String("<1>[<2>](3)");

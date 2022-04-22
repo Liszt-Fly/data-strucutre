@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{n}{String} \PYG{n+nf}{reverseString}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{str}\PYG{o}{==}\PYG{k+kc}{null}\PYG{p}{)\PYGZob{}}
+            \PYG{k}{throw} \PYG{k}{new} \PYG{n}{IllegalArgumentException}\PYG{p}{();}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k+kd}{var} \PYG{n}{stack}\PYG{o}{=}\PYG{k}{new} \PYG{n}{Stack}\PYG{o}{\PYGZlt{}}\PYG{n}{Character}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
+        \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c} \PYG{p}{:}\PYG{n}{str}\PYG{p}{.}\PYG{n+na}{toCharArray}\PYG{p}{())\PYGZob{}}
+            \PYG{n}{stack}\PYG{p}{.}\PYG{n+na}{push}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{StringBuilder} \PYG{n}{stringBuilder}\PYG{o}{=}\PYG{k}{new} \PYG{n}{StringBuilder}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+        \PYG{k}{while}\PYG{p}{(}\PYG{o}{!}\PYG{n}{stack}\PYG{p}{.}\PYG{n+na}{empty}\PYG{p}{())\PYGZob{}}
+            \PYG{n}{stringBuilder}\PYG{p}{.}\PYG{n+na}{append}\PYG{p}{(}\PYG{n}{stack}\PYG{p}{.}\PYG{n+na}{pop}\PYG{p}{());}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{n}{stringBuilder}\PYG{p}{.}\PYG{n+na}{toString}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

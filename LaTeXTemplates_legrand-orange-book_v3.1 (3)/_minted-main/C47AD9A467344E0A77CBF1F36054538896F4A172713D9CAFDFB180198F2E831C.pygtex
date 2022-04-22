@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Expression} \PYG{p}{\PYGZob{}}
+    \PYG{k+kd}{private}  \PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Character}\PYG{o}{\PYGZgt{}} \PYG{n}{leftBracket} \PYG{o}{=}
+     \PYG{n}{Arrays}\PYG{p}{.}\PYG{n+na}{asList}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}(\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}\PYGZlt{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}[\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}\PYGZob{}\PYGZsq{}}\PYG{p}{);}
+    \PYG{k+kd}{private}  \PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Character}\PYG{o}{\PYGZgt{}} \PYG{n}{rightBracket} \PYG{o}{=}
+    \PYG{n}{Arrays}\PYG{p}{.}\PYG{n+na}{asList}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{})\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}]\PYGZsq{}}\PYG{p}{,}\PYG{l+s+sc}{\PYGZsq{}\PYGZcb{}\PYGZsq{}}\PYG{p}{);}
+    \PYG{n}{String} \PYG{n}{str}\PYG{p}{;}
+
+    \PYG{k+kd}{public} \PYG{n+nf}{Expression}\PYG{p}{(}\PYG{n}{String} \PYG{n}{str}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{this}\PYG{p}{.}\PYG{n+na}{str} \PYG{o}{=} \PYG{n}{str}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kd}{private} \PYG{k+kt}{boolean} \PYG{n+nf}{isLeftBracket}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{return}  \PYG{n}{leftBracket}\PYG{p}{.}\PYG{n+na}{contains}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kd}{private} \PYG{k+kt}{boolean} \PYG{n+nf}{matchBracket}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{left}\PYG{p}{,}\PYG{k+kt}{char} \PYG{n}{top}\PYG{p}{)\PYGZob{}}
+       \PYG{k}{return}  \PYG{n}{leftBracket}\PYG{p}{.}\PYG{n+na}{indexOf}\PYG{p}{(}\PYG{n}{left}\PYG{p}{)}\PYG{o}{==}\PYG{n}{rightBracket}\PYG{p}{.}\PYG{n+na}{indexOf}\PYG{p}{(}\PYG{n}{top}\PYG{p}{);}
+
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kd}{private} \PYG{k+kt}{boolean} \PYG{n+nf}{isRightBracket}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{rightBracket}\PYG{p}{.}\PYG{n+na}{contains}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kd}{public} \PYG{k+kt}{boolean} \PYG{n+nf}{bBalancedEquation}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{var} \PYG{n}{stack} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Stack}\PYG{o}{\PYGZlt{}}\PYG{n}{Character}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c} \PYG{p}{:} \PYG{n}{str}\PYG{p}{.}\PYG{n+na}{toCharArray}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{isLeftBracket}\PYG{p}{(}\PYG{n}{c}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+                \PYG{n}{stack}\PYG{p}{.}\PYG{n+na}{push}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{isRightBracket}\PYG{p}{(}\PYG{n}{c}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{stack}\PYG{p}{.}\PYG{n+na}{empty}\PYG{p}{())} \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+                \PYG{k+kt}{char} \PYG{n}{top} \PYG{o}{=} \PYG{n}{stack}\PYG{p}{.}\PYG{n+na}{pop}\PYG{p}{();}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{matchBracket}\PYG{p}{(}\PYG{n}{c}\PYG{p}{,}\PYG{n}{top}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+                    \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+                \PYG{p}{\PYGZcb{}}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

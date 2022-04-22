@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{x}{    public class MikeStack \PYGZob{}}
+\PYG{x}{    private final int[]array=new int[5];}
+\PYG{x}{    private int pointer=0;}
+
+\PYG{x}{\PYGZcb{}}
+\PYG{x}{\PYGZbs{}begin\PYGZob{}minted}
+\end{Verbatim}

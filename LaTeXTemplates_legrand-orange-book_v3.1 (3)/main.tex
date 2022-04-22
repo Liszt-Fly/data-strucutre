@@ -50,32 +50,32 @@
 \vspace*{0.5cm}
 \par
 \begin{tikzpicture}
-	\node (rect) at (0,0) [draw, thick, fill=orange, fill opacity=0.7,
-		minimum width=1cm,minimum height=1cm] {$3$};
-	\node (rect) at (1,0) [draw, thick, fill=orange, fill opacity=0.7,
-		minimum width=1cm,minimum height=1cm] {$1$};
-	\node (rect) at (2,0) [draw, thick, fill=orange, fill opacity=0.7,
-		minimum width=1cm,minimum height=1cm] {$4$};
-	\node (rect) at (3,0) [draw, thick, fill=orange, fill opacity=0.7,
-		minimum width=1cm,minimum height=1cm] {$5$};
-	\node (rect) at (4,0) [draw, thick, fill=orange, fill opacity=0.7,
-		minimum width=1cm,minimum height=1cm] {$6$};
-	\node (rect) at (5,0) [draw, thick, fill=orange, fill opacity=0.7,
-		minimum width=1cm,minimum height=1cm] {$7$};
+    \node (rect) at (0,0) [draw, thick, fill=orange, fill opacity=0.7,
+        minimum width=1cm,minimum height=1cm] {$3$};
+    \node (rect) at (1,0) [draw, thick, fill=orange, fill opacity=0.7,
+        minimum width=1cm,minimum height=1cm] {$1$};
+    \node (rect) at (2,0) [draw, thick, fill=orange, fill opacity=0.7,
+        minimum width=1cm,minimum height=1cm] {$4$};
+    \node (rect) at (3,0) [draw, thick, fill=orange, fill opacity=0.7,
+        minimum width=1cm,minimum height=1cm] {$5$};
+    \node (rect) at (4,0) [draw, thick, fill=orange, fill opacity=0.7,
+        minimum width=1cm,minimum height=1cm] {$6$};
+    \node (rect) at (5,0) [draw, thick, fill=orange, fill opacity=0.7,
+        minimum width=1cm,minimum height=1cm] {$7$};
 \end{tikzpicture}
 
 这是一个数组:[3,1,4,5,6,7],它本质上就是在一段连续的内存片段上存储的一串数据,由于int占了四个字节，所以每一个数组元素的地址相差四位。
 
 接下来分析数组中常见的操作的算法复杂度:
 \begin{itemize}
-	\item Lookup O(1) 根据索引去查找元素，由于数组中可以通过中括号访问符进行访问，所以不论访问哪一个元素，算法复杂度均为O(1)
-	\item Insert O(n) 进行元素插入，如果在末尾进行元素插入，算法复杂度为O(1),但是如果在第一位插入，我们就需要将每一位都往后挪动一位，所以复杂度为O(n)，通常我们都考虑最坏的情况，所以算法复杂度为O(n)
-	\item Delete O(n) 无论删除哪一个元素，其他元素都需要往前移动一位，所以最终算法复杂度为O(n)
+    \item Lookup O(1) 根据索引去查找元素，由于数组中可以通过中括号访问符进行访问，所以不论访问哪一个元素，算法复杂度均为O(1)
+    \item Insert O(n) 进行元素插入，如果在末尾进行元素插入，算法复杂度为O(1),但是如果在第一位插入，我们就需要将每一位都往后挪动一位，所以复杂度为O(n)，通常我们都考虑最坏的情况，所以算法复杂度为O(n)
+    \item Delete O(n) 无论删除哪一个元素，其他元素都需要往前移动一位，所以最终算法复杂度为O(n)
 \end{itemize}
 \section{Practice: To create an Array Class with Java}
 
 \begin{example}
-	在Java中，创建一个MikeArray类型，要求要满足以下几点,1.具有insert方法，可以在数组末尾插入元素，2.具有removeAt(int index)方法，在index处删除对应的元素,3.实现print方法，打印出数组中所有的元素 4. indexOf方法，返回目标元素第一次出现在数组中的索引，如果没有出现元素，则返回索引-1，4.动态扩充，在使用insert方法的时候如果超出了数组本身的长度，扩容到原数组容量的2倍,5.构造方法是给出数组的长度length进行数组构造的。
+    在Java中，创建一个MikeArray类型，要求要满足以下几点,1.具有insert方法，可以在数组末尾插入元素，2.具有removeAt(int index)方法，在index处删除对应的元素,3.实现print方法，打印出数组中所有的元素 4. indexOf方法，返回目标元素第一次出现在数组中的索引，如果没有出现元素，则返回索引-1，4.动态扩充，在使用insert方法的时候如果超出了数组本身的长度，扩容到原数组容量的2倍,5.构造方法是给出数组的长度length进行数组构造的。
 \end{example}
 \begin{minted}[]{java}
 public class MArray {
@@ -146,16 +146,16 @@ public class MArray {
 一般的链表具有头节点，当然也有的具有尾节点，除了一般的单向链表，还有一种双向链表，在双向链表中每一个节点都具有两个指针，一个指向之前的节点，一个指向了之后的节点。但是总体上来说，链表的结构都大同小异。
 
 \begin{center}
-	\includegraphics[scale=0.8]{Images/linked-list.jpg}
+    \includegraphics[scale=0.8]{Images/linked-list.jpg}
 \end{center}
 \section{LinkedList In Java}
 在Java中就有LinkedList，常用的方法有:
 \begin{itemize}
-	\item addFirst 在链表首添加元素
-	\item addLast 在链表尾部添加元素
-	\item contains 是否包含元素
-	\item isEmpty 判断链表是否为空
-	\item indexOf 返回链表中某一元素的位置
+    \item addFirst 在链表首添加元素
+    \item addLast 在链表尾部添加元素
+    \item contains 是否包含元素
+    \item isEmpty 判断链表是否为空
+    \item indexOf 返回链表中某一元素的位置
 \end{itemize}
 这些方法都是由Java内部进行实现的，我们直接引入LinkedList这个类即可直接使用，当然在下一节中，我们将开始写属于我们自己的链表(MikeLinkedList)。
 
@@ -322,11 +322,11 @@ removeFirst方法的核心是将第二个节点设置为First,然后将第一个
         return array;
     }
 \end{minted}
-\subsection{练习题1:反转链表}
+\section{练习题1:反转链表}
 \begin{example}
-	将链表反转，比如10->20->30->40->50反转为50->40->30->20->10。
-	仔细思考，该题并不难，我们发现其实就是将链表的箭头顺序反转了，本质上就是10<-20<-30<-40<-50,每一个指针都指向了之前的指针，所以我们只需要构造一个previous指针指向前一个节点即可
-	\begin{minted}{java}
+    将链表反转，比如10->20->30->40->50反转为50->40->30->20->10。
+    仔细思考，该题并不难，我们发现其实就是将链表的箭头顺序反转了，本质上就是10<-20<-30<-40<-50,每一个指针都指向了之前的指针，所以我们只需要构造一个previous指针指向前一个节点即可
+    \begin{minted}{java}
 	    public void reverse() {
         //first second
         //previous current
@@ -348,7 +348,7 @@ removeFirst方法的核心是将第二个节点设置为First,然后将第一个
 \end{example}
 \section{练习题2:寻找倒数第K个链表节点}
 \begin{example}
-	题目要求不允许直接遍历一整遍链表，然后获取对应的节点，我们使用快慢双指针来解决问题：快指针在一开始的时候就进行向前推进，当推进了K步之后慢指针开始运行，当快指针遍历完链表的时候，慢指针指向的节点就是对应的倒数第K个节点。
+    题目要求不允许直接遍历一整遍链表，然后获取对应的节点，我们使用快慢双指针来解决问题：快指针在一开始的时候就进行向前推进，当推进了K步之后慢指针开始运行，当快指针遍历完链表的时候，慢指针指向的节点就是对应的倒数第K个节点。
 \end{example}
 \begin{minted}{java}
     public int getKthFromTheEnd(int k) {
@@ -373,6 +373,134 @@ removeFirst方法的核心是将第二个节点设置为First,然后将第一个
         return b.value;
     }
 \end{minted}
+\chapter{Stack}
+\section{Overview of Stack}
+栈是一种很常见的数据结构,它遵循先入后出(FILO)的原则，先入栈的元素反而最后出栈，所以对于一些需要进行反转数据顺序的操作使用栈是非常适合的。
+\begin{center}
+    \includegraphics[scale=0.5]{Images/stack.png}
+\end{center}
+举一个非常通俗易懂的例子:吃薯片。我们按照顺序向薯片口袋装入薯片，先吃掉的反而是最后装入的薯片。
+还有web开发中的路由跳转，每次跳转路由，我们都将对应的路由压入栈中，当我们要进行路由回退操作的时候，回退的都是最后压入的路由
+
+\section{Stack in Java}
+在Java中有对应的Stack类型，它主要的方法是push入栈，pop出栈，peek方法用于查看位于栈顶的元素，但是不会弹出，empty方法用于判断这个stack是否为空
+\begin{minted}{java}
+Stack<Integer> stack = new Stack<>();
+stack.push(1);
+stack.push(2);
+stack.push(3);
+System.out.println(stack);//[1,2,3]
+System.out.println(stack.pop());//3
+System.out.println(stack.peek());//2
+System.out.println(stack.empty());//false
+\end{minted}
+\section{MikeStack的实现}
+MikeStack的内部，我们使用数组来实现，但是使用数组来实现难免会出现一些问题。问题一：Java实现的Stack不会出现栈满的问题，但是我们使用数组来实现，必然会会遇到数组元素占满，为了简便不对数组进行复制然后扩充，而是抛出一个异常状态。问题二：使用数组实现，在数组没有填满的时候，比如容量为5，填充三个元素的时候，输出必然为[1,2,3,0,0],这样是不像java中栈的实现的，所以我们使用一个counter计数器，只输出真正有值的部分。
+gg
+对于push,pop,peek方法都需要进行临界情况的判定，如果count==0的时候，我们需要抛出一个IllegalStateExceptio异常。
+
+\begin{minted}{java}
+    public class MikeStack {
+    private final int[]array=new int[5];
+    private int pointer=0;
+}
+\end{minted}
+\begin{minted}{java}
+    public void push(int item){
+        if(pointer>=array.length){
+            throw new IllegalStateException();
+        }
+        array[pointer++]=item;
+    }
+    public int pop(){
+        if(pointer==0){
+            throw new IllegalStateException();
+        }
+        return array[--pointer];
+    }
+    public int peek(){
+        if(pointer==0){
+            throw new IllegalStateException();
+        }
+        return array[pointer-1];
+    }
+    public String toArray(){
+
+        return Arrays.toString(Arrays.copyOfRange(array,0,pointer));
+    }
+\end{minted}
+\section{练习题1:反转字符串}
+\begin{example}
+    现在有一个字符串Hello,World，我们需要写一个方法来反转这个字符串。由于在前文中提过，由于Stack的特性，很容易进行一些反转操作，所以我们使用Stack来完成这一题
+    \begin{minted}{java}
+    public static String reverseString(String str){
+        if(str==null){
+            throw new IllegalArgumentException();
+        }
+        var stack=new Stack<Character>();
+        for(char c :str.toCharArray()){
+            stack.push(c);
+        }
+        StringBuilder stringBuilder=new StringBuilder("");
+        while(!stack.empty()){
+            stringBuilder.append(stack.pop());
+        }
+        return stringBuilder.toString();
+    }
+    \end{minted}
+    从入栈到出栈就会导致数据以相反的顺序输出出来，所以我们只需要将数据压入栈中，最后再使用pop依次出栈即可。
+\end{example}
+\section{练习题2:判断表达式的平衡}
+\begin{example}
+    该题相较于上题来说，比较复杂。表达式中的符号有\{,(,<,[一共四种符号。
+    \begin{itemize}
+        \item \{1+2+3\} 平衡
+        \item >1231< 不平衡
+        \item <\{1+2+3\}> 平衡
+        \item <\{1+2)\} 不平衡
+    \end{itemize}
+    一次性考虑所有的情况，比较复杂，所以我们首先考虑只有()的情况，遇到开始符号入栈，遇到结尾符号出栈，最后栈里是空的，那么就平衡。在考虑清楚单一情况之后，我们考虑所有的情况，可以将这些符号分别录入两个数组，但是一定要注意顺序对应，两个数组AB,A[1]和B[1]才是完全对应的。
+    \begin{minted}{java}
+public class Expression {
+    private  List<Character> leftBracket =
+     Arrays.asList('(','<','[','{');
+    private  List<Character> rightBracket =
+    Arrays.asList(')','>',']','}');
+    String str;
+
+    public Expression(String str) {
+        this.str = str;
+    }
+    private boolean isLeftBracket(char c){
+        return  leftBracket.contains(c);
+    }
+    private boolean matchBracket(char left,char top){
+       return  leftBracket.indexOf(left)==rightBracket.indexOf(top);
+
+    }
+    private boolean isRightBracket(char c){
+        return rightBracket.contains(c);
+    }
+    public boolean bBalancedEquation() {
+        var stack = new Stack<Character>();
+        for (char c : str.toCharArray()) {
+            if (isLeftBracket(c)) {
+                stack.push(c);
+            }
+            if (isRightBracket(c)) {
+                if (stack.empty()) return false;
+                char top = stack.pop();
+                if (matchBracket(c,top)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+    \end{minted}
+\end{example}
 \part{Part One Title}
 
 %----------------------------------------------------------------------------------------
@@ -440,39 +568,39 @@ Lists are useful to present information in a concise and/or ordered way.
 \subsection{Numbered List}\index{Lists!Numbered List}
 
 \begin{enumerate}
-	\item First numbered item
-	      \begin{enumerate}
-		      \item First indented numbered item
-		      \item Second indented numbered item
-		            \begin{enumerate}
-			            \item First second-level indented numbered item
-		            \end{enumerate}
-	      \end{enumerate}
-	\item Second numbered item
-	\item Third numbered item
+    \item First numbered item
+          \begin{enumerate}
+              \item First indented numbered item
+              \item Second indented numbered item
+                    \begin{enumerate}
+                        \item First second-level indented numbered item
+                    \end{enumerate}
+          \end{enumerate}
+    \item Second numbered item
+    \item Third numbered item
 \end{enumerate}
 
 \subsection{Bullet Point List}\index{Lists!Bullet Points}
 
 \begin{itemize}
-	\item First bullet point item
-	      \begin{itemize}
-		      \item First indented bullet point item
-		      \item Second indented bullet point item
-		            \begin{itemize}
-			            \item First second-level indented bullet point item
-		            \end{itemize}
-	      \end{itemize}
-	\item Second bullet point item
-	\item Third bullet point item
+    \item First bullet point item
+          \begin{itemize}
+              \item First indented bullet point item
+              \item Second indented bullet point item
+                    \begin{itemize}
+                        \item First second-level indented bullet point item
+                    \end{itemize}
+          \end{itemize}
+    \item Second bullet point item
+    \item Third bullet point item
 \end{itemize}
 
 \subsection{Descriptions and Definitions}\index{Lists!Descriptions and Definitions}
 
 \begin{description}
-	\item[Name] Description
-	\item[Word] Definition
-	\item[Comment] Elaboration
+    \item[Name] Description
+    \item[Word] Definition
+    \item[Comment] Elaboration
 \end{description}
 
 %------------------------------------------------
@@ -510,11 +638,11 @@ fi fj fl ffl ffi Ty
 This is a theorem consisting of several equations.
 
 \begin{theorem}[Name of the theorem] % Specify a name/title in square brackets, or leave them out for no title
-	In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
-	\begin{align}
-		 & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
-		 & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-	\end{align}
+    In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
+    \begin{align}
+         & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
+         & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
+    \end{align}
 \end{theorem}
 
 \subsection{Single Line}\index{Theorems!Single Line}
@@ -522,7 +650,7 @@ This is a theorem consisting of several equations.
 This is a theorem consisting of just one line.
 
 \begin{theorem} % Specify a name/title in square brackets, or leave them out for no title
-	A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
+    A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
 \end{theorem}
 
 %------------------------------------------------
@@ -532,12 +660,12 @@ This is a theorem consisting of just one line.
 A definition can be mathematical or it could define a concept.
 
 \begin{definition}[Definition name] % Specify a name/title in square brackets, or leave them out for no title
-	Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
-	\begin{align}
-		 & ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}        \\
-		 & ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||        \\
-		 & ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
-	\end{align}
+    Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
+    \begin{align}
+         & ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}        \\
+         & ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||        \\
+         & ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
+    \end{align}
 \end{definition}
 
 %------------------------------------------------
@@ -545,12 +673,12 @@ A definition can be mathematical or it could define a concept.
 \section{Notations}\index{Notations}
 
 \begin{notation} % Specify a name/title in square brackets, or leave them out for no title
-	Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
-	\begin{enumerate}
-		\item Bounded support $G$;
-		\item Infinitely differentiable;
-	\end{enumerate}
-	a vector space is denoted by $\mathcal{D}(G)$.
+    Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
+    \begin{enumerate}
+        \item Bounded support $G$;
+        \item Infinitely differentiable;
+    \end{enumerate}
+    a vector space is denoted by $\mathcal{D}(G)$.
 \end{notation}
 
 %------------------------------------------------
@@ -560,7 +688,7 @@ A definition can be mathematical or it could define a concept.
 This is an example of a remark.
 
 \begin{remark}
-	The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+    The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
 \end{remark}
 
 %------------------------------------------------
@@ -568,7 +696,7 @@ This is an example of a remark.
 \section{Corollaries}\index{Corollaries}
 
 \begin{corollary}[Corollary name] % Specify a name/title in square brackets, or leave them out for no title
-	The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+    The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
 \end{corollary}
 
 %------------------------------------------------
@@ -578,17 +706,17 @@ This is an example of a remark.
 \subsection{Several equations}\index{Propositions!Several Equations}
 
 \begin{proposition}[Proposition name] % Specify a name/title in square brackets, or leave them out for no title
-	It has the properties:
-	\begin{align}
-		 & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
-		 & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-	\end{align}
+    It has the properties:
+    \begin{align}
+         & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
+         & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
+    \end{align}
 \end{proposition}
 
 \subsection{Single Line}\index{Propositions!Single Line}
 
 \begin{proposition} % Specify a name/title in square brackets, or leave them out for no title
-	Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$.
+    Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$.
 \end{proposition}
 
 %------------------------------------------------
@@ -598,18 +726,18 @@ This is an example of a remark.
 \subsection{Equation Example}\index{Examples!Equation}
 
 \begin{example} % Specify a name/title in square brackets, or leave them out for no title
-	Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
-	\begin{equation}
-		f(x)=\left\{\begin{aligned}                                                                                                                                                                  & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
-                                                                                                                                                                                 & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
-	\end{equation}
-	The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\mathopen{]}0\,;5/2-\sqrt{2}\mathclose{[}$.
+    Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
+    \begin{equation}
+        f(x)=\left\{\begin{aligned}                                                                                                                                                                                              & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
+                                                                                                                                                                                                             & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
+    \end{equation}
+    The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\mathopen{]}0\,;5/2-\sqrt{2}\mathclose{[}$.
 \end{example}
 
 \subsection{Text Example}\index{Examples!Text}
 
 \begin{example}[Example name] % Specify a name/title in square brackets, or leave them out for no title
-	Aliquam arcu turpis, ultrices sed luctus ac, vehicula id metus. Morbi eu feugiat velit, et tempus augue. Proin ac mattis tortor. Donec tincidunt, ante rhoncus luctus semper, arcu lorem lobortis justo, nec convallis ante quam quis lectus. Aenean tincidunt sodales massa, et hendrerit tellus mattis ac. Sed non pretium nibh. Donec cursus maximus luctus. Vivamus lobortis eros et massa porta porttitor.
+    Aliquam arcu turpis, ultrices sed luctus ac, vehicula id metus. Morbi eu feugiat velit, et tempus augue. Proin ac mattis tortor. Donec tincidunt, ante rhoncus luctus semper, arcu lorem lobortis justo, nec convallis ante quam quis lectus. Aenean tincidunt sodales massa, et hendrerit tellus mattis ac. Sed non pretium nibh. Donec cursus maximus luctus. Vivamus lobortis eros et massa porta porttitor.
 \end{example}
 
 %------------------------------------------------
@@ -617,7 +745,7 @@ This is an example of a remark.
 \section{Exercises}\index{Exercises}
 
 \begin{exercise} % Specify a name/title in square brackets, or leave them out for no title
-	This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+    This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
 \end{exercise}
 
 %------------------------------------------------
@@ -635,7 +763,7 @@ What is the average airspeed velocity of an unladen swallow?
 Define a word to improve a students' vocabulary.
 
 \begin{vocabulary}[Word] % Specify a name/title in square brackets, or leave them out for no title
-	Definition of word.
+    Definition of word.
 \end{vocabulary}
 
 %----------------------------------------------------------------------------------------
@@ -655,35 +783,35 @@ Define a word to improve a students' vocabulary.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
 
 \begin{table}[H] % Use [H] to suppress floating and place the figure/table exactly where it is specified in the text
-	\centering % Horizontally center the table on the page
-	\begin{tabular}{L{0.15\textwidth} R{0.15\textwidth} R{0.15\textwidth}} % Specify column alignment with L{width}, C{width} and R{width} for fixed-width columns, or the default latex l, c and r for flexible-width columns
-		\toprule
-		\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
-		\midrule
-		Treatment 1         & 0.0003262           & 0.562               \\
-		Treatment 2         & 0.0015681           & 0.910               \\
-		Treatment 3         & 0.0009271           & 0.296               \\
-		\bottomrule
-	\end{tabular}
-	\caption{Table caption.}
-	\label{tab:example} % Unique label used for referencing the table in-text
+    \centering % Horizontally center the table on the page
+    \begin{tabular}{L{0.15\textwidth} R{0.15\textwidth} R{0.15\textwidth}} % Specify column alignment with L{width}, C{width} and R{width} for fixed-width columns, or the default latex l, c and r for flexible-width columns
+        \toprule
+        \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
+        \midrule
+        Treatment 1         & 0.0003262           & 0.562               \\
+        Treatment 2         & 0.0015681           & 0.910               \\
+        Treatment 3         & 0.0009271           & 0.296               \\
+        \bottomrule
+    \end{tabular}
+    \caption{Table caption.}
+    \label{tab:example} % Unique label used for referencing the table in-text
 \end{table}
 
 Referencing \autoref{tab:example} in-text using its label.
 
 \begin{table}[t] % Floating table, [t] tells LaTeX to place it at the top of the next available page
-	\centering % Horizontally center the table on the page
-	\begin{tabular}{L{0.15\textwidth} R{0.15\textwidth} R{0.15\textwidth}} % Specify column alignment with L{width}, C{width} and R{width} for fixed-width columns, or the default latex l, c and r for flexible-width columns
-		\toprule
-		\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
-		\midrule
-		Treatment 1         & 0.0003262           & 0.562               \\
-		Treatment 2         & 0.0015681           & 0.910               \\
-		Treatment 3         & 0.0009271           & 0.296               \\
-		\bottomrule
-	\end{tabular}
-	\caption{Floating table.}
-	\label{tab:floating} % Unique label used for referencing the table in-text
+    \centering % Horizontally center the table on the page
+    \begin{tabular}{L{0.15\textwidth} R{0.15\textwidth} R{0.15\textwidth}} % Specify column alignment with L{width}, C{width} and R{width} for fixed-width columns, or the default latex l, c and r for flexible-width columns
+        \toprule
+        \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
+        \midrule
+        Treatment 1         & 0.0003262           & 0.562               \\
+        Treatment 2         & 0.0015681           & 0.910               \\
+        Treatment 3         & 0.0009271           & 0.296               \\
+        \bottomrule
+    \end{tabular}
+    \caption{Floating table.}
+    \label{tab:floating} % Unique label used for referencing the table in-text
 \end{table}
 
 %------------------------------------------------
@@ -693,19 +821,19 @@ Referencing \autoref{tab:example} in-text using its label.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.
 
 \begin{figure}[H] % Use [H] to suppress floating and place the figure/table exactly where it is specified in the text
-	\centering % Horizontally center the figure on the page
-	\includegraphics[width=0.5\textwidth]{creodocs_logo.pdf} % Include the figure image
-	\caption{Figure caption.}
-	\label{fig:placeholder} % Unique label used for referencing the figure in-text
+    \centering % Horizontally center the figure on the page
+    \includegraphics[width=0.5\textwidth]{creodocs_logo.pdf} % Include the figure image
+    \caption{Figure caption.}
+    \label{fig:placeholder} % Unique label used for referencing the figure in-text
 \end{figure}
 
 Referencing \autoref{fig:placeholder} in-text using its label.
 
 \begin{figure}[b] % Floating figure, [b] tells LaTeX to place it at the bottom of the next available page
-	\centering % Horizontally center the figure on the page
-	\includegraphics[width=\textwidth]{creodocs_logo.pdf} % Include the figure image
-	\caption{Floating figure.}
-	\label{fig:floating} % Unique label used for referencing the figure in-text
+    \centering % Horizontally center the figure on the page
+    \includegraphics[width=\textwidth]{creodocs_logo.pdf} % Include the figure image
+    \caption{Floating figure.}
+    \label{fig:floating} % Unique label used for referencing the figure in-text
 \end{figure}
 
 %----------------------------------------------------------------------------------------
@@ -755,25 +883,25 @@ Referencing \autoref{fig:placeholder} in-text using its label.
 
 \begin{appendices}
 
-	\renewcommand{\chaptername}{Appendix} % Change the chapter name to Appendix, i.e. "Appendix A: Title", instead of "Chapter A: Title" in the headers
+    \renewcommand{\chaptername}{Appendix} % Change the chapter name to Appendix, i.e. "Appendix A: Title", instead of "Chapter A: Title" in the headers
 
-	%------------------------------------------------
+    %------------------------------------------------
 
-	\chapter{Appendix Chapter Title}
+    \chapter{Appendix Chapter Title}
 
-	\section{Appendix Section Title}
+    \section{Appendix Section Title}
 
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor mi risus, quis tempor libero hendrerit at. Duis hendrerit placerat quam et semper. Nam ultricies metus vehicula arcu viverra, vel ullamcorper justo elementum. Pellentesque vel mi ac lectus cursus posuere et nec ex. Fusce quis mauris egestas lacus commodo venenatis. Ut at arcu lectus. Donec et urna nunc. Morbi eu nisl cursus sapien eleifend tincidunt quis quis est. Donec ut orci ex. Praesent ligula enim, ullamcorper non lorem a, ultrices volutpat dolor. Nullam at imperdiet urna. Pellentesque nec velit eget est euismod pretium.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor mi risus, quis tempor libero hendrerit at. Duis hendrerit placerat quam et semper. Nam ultricies metus vehicula arcu viverra, vel ullamcorper justo elementum. Pellentesque vel mi ac lectus cursus posuere et nec ex. Fusce quis mauris egestas lacus commodo venenatis. Ut at arcu lectus. Donec et urna nunc. Morbi eu nisl cursus sapien eleifend tincidunt quis quis est. Donec ut orci ex. Praesent ligula enim, ullamcorper non lorem a, ultrices volutpat dolor. Nullam at imperdiet urna. Pellentesque nec velit eget est euismod pretium.
 
-	%------------------------------------------------
+    %------------------------------------------------
 
-	\chapter{Appendix Chapter Title}
+    \chapter{Appendix Chapter Title}
 
-	\section{Appendix Section Title}
+    \section{Appendix Section Title}
 
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor mi risus, quis tempor libero hendrerit at. Duis hendrerit placerat quam et semper. Nam ultricies metus vehicula arcu viverra, vel ullamcorper justo elementum. Pellentesque vel mi ac lectus cursus posuere et nec ex. Fusce quis mauris egestas lacus commodo venenatis. Ut at arcu lectus. Donec et urna nunc. Morbi eu nisl cursus sapien eleifend tincidunt quis quis est. Donec ut orci ex. Praesent ligula enim, ullamcorper non lorem a, ultrices volutpat dolor. Nullam at imperdiet urna. Pellentesque nec velit eget est euismod pretium.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor mi risus, quis tempor libero hendrerit at. Duis hendrerit placerat quam et semper. Nam ultricies metus vehicula arcu viverra, vel ullamcorper justo elementum. Pellentesque vel mi ac lectus cursus posuere et nec ex. Fusce quis mauris egestas lacus commodo venenatis. Ut at arcu lectus. Donec et urna nunc. Morbi eu nisl cursus sapien eleifend tincidunt quis quis est. Donec ut orci ex. Praesent ligula enim, ullamcorper non lorem a, ultrices volutpat dolor. Nullam at imperdiet urna. Pellentesque nec velit eget est euismod pretium.
 
-	%------------------------------------------------
+    %------------------------------------------------
 
 \end{appendices}
 
