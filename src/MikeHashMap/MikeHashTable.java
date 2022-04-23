@@ -14,47 +14,62 @@ public class MikeHashTable {
 
 
     }
+
     //Bucket的容器，槽位，初始为5个
     private LinkedList<Entry>[] entries = new LinkedList[5];
-    public String get(int key){
-        var index=hash(key);
-        var bucket=entries[index];
-        if(bucket!=null){
-            for(var entry:bucket){
-                if(entry.key==key){
-                    return  entry.value;
-                }
+
+    public String get(int key) {
+        var entry = getEntry(key);
+        return entry == null ? null : entry.value;
+    }
+
+    public void put(int key, String value) {
+
+        var entry = getEntry(key);
+        if (entry != null) {
+            entry.value = value;
+            return;
+        }
+        var bucket = getOrCreateBucket(key);
+        bucket.addLast(new Entry(key, value));
+
+    }
+
+    private LinkedList<Entry> getBucket(int key) {
+        return entries[hash(key)];
+    }
+
+    private Entry getEntry(int key) {
+        var bucket = entries[key];
+        if (bucket == null) return null;
+        for (var entry : bucket) {
+            if (entry.key == key) {
+                return entry;
             }
         }
         return null;
     }
-    public void put(int key, String value) {
-        //计算槽位
-        var index = hash(key);
 
-        //如果没有对应的槽位，则新建一个槽位
-        if (entries[index] == null) {
-            entries[index] = new LinkedList<>();
-            var bucket=entries[index];
-            var entry = new Entry(key, value);
-            bucket.addLast(entry);
+    private LinkedList<Entry> getOrCreateBucket(int key) {
+        var bucket = getBucket(key);
+        if (bucket == null) {
+            bucket = new LinkedList<>();
         }
-else{
-    var bucket=entries[index];
-    var newEntry=new Entry(key,value);
-            for(var entry:bucket){
-                if(entry.key==key){
-                    System.out.println(key);
-                    entry.value=value;
-                    return;
-                }
-
-            }
-            bucket.addLast(newEntry);
-        }
+        return bucket;
     }
 
     private int hash(int key) {
         return key % entries.length;
     }
+
+    public void remove(int key) {
+        //先找到对应的bucket
+        var entry = getEntry(key);
+        var bucket = getBucket(key);
+        if (entry == null) throw new IllegalStateException();
+        getBucket(key).remove(key);
+        throw new IllegalStateException();
+
+    }
+}
 }

@@ -35,6 +35,9 @@ public class Main {
         System.out.println(mikeHashTable.get(14));
         System.out.println(mikeHashTable.get(15));
         System.out.println(mikeHashTable.get(20));
+        System.out.println(mikeHashTable.get(20));
+        mikeHashTable.remove(20);
+        System.out.println(mikeHashTable.get(20));
     }
     public static Character firstNoneRepeatChar(String str){
         //a green apple
