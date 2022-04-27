@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{traverseLevelOrder}\PYG{p}{()\PYGZob{}}
+
+\PYG{k}{for}\PYG{p}{(}\PYG{k+kd}{var} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{height}\PYG{p}{();}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kd}{var} \PYG{n}{value}\PYG{p}{:} \PYG{n}{printNodesAtDistance}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))\PYGZob{}}
+        \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}第\PYGZdq{}}\PYG{o}{+}\PYG{n}{i}\PYG{o}{+}\PYG{l+s}{\PYGZdq{}层\PYGZdq{}}\PYG{o}{+}\PYG{n}{value}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

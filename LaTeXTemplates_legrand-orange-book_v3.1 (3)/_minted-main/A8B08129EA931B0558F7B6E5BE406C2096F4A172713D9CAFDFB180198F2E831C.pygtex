@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{boolean} \PYG{n+nf}{isBinarySearchTree}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{isBinarySearchTree}\PYG{p}{(}\PYG{n}{root}\PYG{p}{,} \PYG{n}{Integer}\PYG{p}{.}\PYG{n+na}{MIN\PYGZus{}VALUE}\PYG{p}{,}
+        \PYG{n}{Integer}\PYG{p}{.}\PYG{n+na}{MAX\PYGZus{}VALUE}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{private} \PYG{k+kt}{boolean} \PYG{n+nf}{isBinarySearchTree}\PYG{p}{(}\PYG{n}{Node} \PYG{n}{root}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{min}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{max}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)} \PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
+        \PYG{k}{return} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value} \PYG{o}{\PYGZgt{}} \PYG{n}{min} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value} \PYG{o}{\PYGZlt{}} \PYG{n}{max}
+        \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{isBinarySearchTree}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild}\PYG{p}{,} \PYG{n}{min}\PYG{p}{,} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{)}
+        \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{isBinarySearchTree}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild}\PYG{p}{,} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{,} \PYG{n}{max}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

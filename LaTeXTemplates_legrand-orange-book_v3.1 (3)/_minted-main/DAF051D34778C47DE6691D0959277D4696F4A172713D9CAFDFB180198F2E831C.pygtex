@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kt}{boolean} \PYG{n+nf}{find}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{var} \PYG{n}{current} \PYG{o}{=} \PYG{n}{root}\PYG{p}{;}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{current} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{value} \PYG{o}{\PYGZlt{}} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{current} \PYG{o}{=} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{leftChild}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{value} \PYG{o}{\PYGZgt{}} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{current} \PYG{o}{=} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{rightChild}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+                \PYG{k}{return} \PYG{k+kc}{true}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

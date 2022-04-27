@@ -38,7 +38,7 @@ public class MikeTree {
                 current = current.leftChild;
             }
         }
-        ;
+
         current = node;
     }
 
@@ -60,7 +60,6 @@ public class MikeTree {
     public void traversePreOrder() {
         traversePreOrder(root);
     }
-
     private void traversePreOrder(Node root) {
         if (root == null) return;
         System.out.println(root.value);
@@ -174,7 +173,7 @@ public class MikeTree {
     }
 
     public void traverseLevelOrder(){
-        System.out.println("高度:"+height());
+
         for(var i=0;i<=height();i++){
 
             for(var value: printNodesAtDistance(i)){

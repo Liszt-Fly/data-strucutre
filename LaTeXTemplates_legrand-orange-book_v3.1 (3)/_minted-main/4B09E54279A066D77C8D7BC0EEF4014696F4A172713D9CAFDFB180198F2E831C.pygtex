@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{traverseInOrder}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{n}{traverseInOrder}\PYG{p}{(}\PYG{n}{root}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kd}{private} \PYG{k+kt}{void} \PYG{n+nf}{traverseInOrder}\PYG{p}{(}\PYG{n}{Node} \PYG{n}{root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;}
+
+        \PYG{n}{traverseInOrder}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild}\PYG{p}{);}
+        \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{);}
+        \PYG{n}{traverseInOrder}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

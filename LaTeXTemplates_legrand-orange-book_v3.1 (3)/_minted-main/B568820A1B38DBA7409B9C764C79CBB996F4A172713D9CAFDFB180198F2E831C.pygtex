@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{min}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{min}\PYG{p}{(}\PYG{n}{root}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{private} \PYG{k+kt}{int} \PYG{n+nf}{min}\PYG{p}{(}\PYG{n}{Node} \PYG{n}{root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild} \PYG{o}{==} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild} \PYG{o}{!=} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{,} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild} \PYG{o}{!=} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{,} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{);}
+
+        \PYG{k+kd}{var} \PYG{n}{left} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild}\PYG{p}{);}
+        \PYG{k+kd}{var} \PYG{n}{right} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild}\PYG{p}{);}
+        \PYG{k}{return} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{min}\PYG{p}{(}\PYG{n}{left}\PYG{p}{,} \PYG{n}{right}\PYG{p}{),} \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{value}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

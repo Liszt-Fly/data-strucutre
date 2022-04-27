@@ -1,0 +1,9 @@
+# 忽略latex相关的配置文件
+*.pdf
+*.aux
+*.bc
+*.idx
+*.log
+*.ptc
+*.xml
+*.gz

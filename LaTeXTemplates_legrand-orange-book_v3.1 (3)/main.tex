@@ -27,7 +27,9 @@
 \usepackage{fontspec}
 \usepackage{color}
 \usepackage{xeCJK}
+\usepackage{forest}
 \usepackage{tikz}
+
 \definecolor{bg}{rgb}{1,1,1}
 
 %----------------------------------------------------------------------------------------
@@ -501,11 +503,273 @@ public class Expression {
 
     \end{minted}
 \end{example}
+\chapter{Tree}
+
+树是数据结构中很常见的一种，和大自然里的一样，有不同的类别。比如二叉树，二叉搜索树，红黑树等等。在树这一章节中，最需要学习到的思想就是递归。使用递归解决问题最重要有两个点，一个是如何让递归终止，第二个是思考递归如何进行。
+\section{Binary Search Tree(BST)}
+\begin{center}
+    \begin{forest}
+        [8
+                [3
+                        [1]
+                        [6
+                                [4][7]]
+                ]
+                [10
+                        [14[13]]
+                ]]
+    \end{forest}
+\end{center}
+二叉搜索树是一种非常经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势，应用十分广泛，比如文件系统和数据库系统一般就会采用这种数据结构进行高效率的排序和检索操作。
+
+二叉搜索树的特点是，如果它的左子树不为空，则左子树上所有的节点均小于它根节点的值；如果它的右子树不为空，右子树上所有的节点均大于它根节点的值。它的左右子树也分别是二叉搜索树
+
+\section{Build a tree}
+由于delete方法比较有难度，我们仅实现find方法和insert方法。树和链表非常类似，也是由一个一个节点组成的，所以我们自然也需要先实现Node这个InnerClass。没有任何方法实现的框架实现如下:
+\begin{minted}{java}
+    public Class MikeTree{
+        private Class Node{
+            private int value;
+            private Node LeftChild;
+            private Node RightChild;
+            public Node(int value){
+                this.value=value;
+            }
+        }
+    }
+\end{minted}
+\section{Implement the method:Insert}
+在上文中我们提过在树中递归是非常重要的一个方法，但是在这个方法中，我们不使用递归来完成，而使用遍历。插入节点的逻辑很简单，根据数据的大小进行选择下一个节点遍历的内容是左节点还是右节点，当下一次遍历的时候如果目标为null，那么就是我们需要插入节点的位置了。当然这样插入形成的是二叉搜索树的结构。
+\begin{minted}{java}
+    public void insert(int value) {
+        //generate node
+        var node = new Node(value);
+        if (root == null) {
+            root = node;
+            return;
+        }
+        var current = root;
+        while (true) {
+            if (value > current.value) {
+                if (current.rightChild == null) {
+                    current.rightChild = node;
+                    break;
+                }
+                current = current.rightChild;
+            } else {
+                if (current.leftChild == null) {
+                    current.leftChild = node;
+                    break;
+                }
+                current = current.leftChild;
+            }
+        }
+        current = node;
+    }
+\end{minted}
+
+\section{Implement the method: find}
+find方法和insert方法原理是类似的，由于我们在insert的时候进行了大小排序，形成的是一棵二叉搜索树，所以find也可以根据这个原理进行寻找。
+\begin{minted}{java}
+    public boolean find(int value) {
+        var current = root;
+        while (current != null) {
+            if (value < current.value) {
+                current = current.leftChild;
+            } else if (value > current.value) {
+                current = current.rightChild;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+\end{minted}
+
+\section{Traverse the tree}
+从大类上来区分，一共有两种，一种是深度优先，另外一种是广度优先。
+深度优先的遍历顺序多种多样，有前序遍历，中序遍历以及后序遍历，命名方式是根据root节点的位置而决定的
+\begin{itemize}
+    \item PreOrder Traverse 前序遍历: \textcolor{red}{root},left,right
+    \item InOrder Traverse 中序遍历: left,\textcolor{red}{root},right
+    \item PostOrder Traverse 后序遍历:left,right,\textcolor{red}{root}
+\end{itemize}
+
+\begin{center}
+    \includegraphics[scale=0.4]{Images/depth.jpg}
+\end{center}
+\begin{itemize}
+    \item 广度优先:35,20,40,15,29,50,16,28,30,45,55
+    \item 深度优先
+          \subitem 前序遍历:35,20,15,16,29,28,30,40,50,45,55
+          \subitem 中序遍历:15 16 20 28 29 30 35 40 45 50 55
+          \subitem 后序遍历:16 15 28 30 29 20 45 55 50 40 35
+\end{itemize}
+我们需要根据情景不同而选择合适的遍历方式进行遍历,遍历的逻辑就是递归，只需要找到对应的终止点，和递归逻辑即可执行。
+
+\subsection{PreOrder Traverse}
+\begin{minted}{java}
+        public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+    private void traversePreOrder(Node root) {
+        if (root == null) return;
+        System.out.println(root.value);
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+\end{minted}
+\subsection{InOrder Traverse}
+\begin{minted}{java}
+        public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+
+    private void traverseInOrder(Node root) {
+        if (root == null) return;
+
+        traverseInOrder(root.leftChild);
+        System.out.println(root.value);
+        traverseInOrder(root.rightChild);
+    }
+\end{minted}
+\subsection{PostOrder Traverse}
+\begin{minted}{java}
+        public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+    private void traversePostOrder(Node root) {
+        if (root == null) return;
+        traversePostOrder(root.leftChild);
+        traversePostOrder(root.rightChild);
+        System.out.println(root.value);
+    }
+\end{minted}
+\section{Depth and height of node}
+\begin{center}
+    \includegraphics[scale=0.3]{Images/ABXGfH.jpg}
+\end{center}
+高度和深度可以说是同一个类型的概念，但是他们的遍历顺序是相反的。深度是从上往下数的，而高度恰恰相反是从下往上数的。
+\begin{itemize}
+    \item 深度的定义：某节点的深度是指从根节点到该节点的最长简单路径边的条数。
+    \item 高度的定义：高度是指从该节点到叶子节点的最长简单路径边的条数。
+\end{itemize}
+对于一整棵树来说，深度和高度都是相等的，但是对于具体的节点，深度和高度却不一定是相等的。我们以高度为例，使用递归来编写代码。递归停止的条件就是遍历的节点如果不存在子节点，那么就返回高度0。但也要注意对于一棵不存在的树，我们需要返回-1。接下来就需要思考递归的条件，对于每一个节点的高度来说1+Math.max(左节点的高度，右节点的高度)，取这两边的最大值来使用。
+\begin{minted}{java}
+public int height() {
+
+        return height(root);
+    }
+private int height(Node root) {
+        if (root == null) return -1;
+        if (root.leftChild == null &&
+        root.rightChild == null)
+        return 0;
+        return 1 + Math.max(
+         height(root.leftChild),
+         height(root.rightChild));
+    }
+\end{minted}
+
+\section{Min Value in a tree}
+这是一个求一棵树中最小值的问题，但是我们需要声明一个前提，这不是一棵二叉搜索树，而仅仅是一棵二叉树（虽然它确实是一棵二叉搜索树)。计算这棵树的最小值，我们还是使用递归的方法来思考。如果左右子树都不存在，返回root的值即可，如果左子树存在，右子树不存在，就返回左子树的值。如果右子树存在，左子树不存在，就返回右子树的值，这就是递归停止的条件。而递归执行的逻辑自然是返回左右子树,root中的最小值。
+\begin{minted}{java}
+public int min() {
+        return min(root);
+    }
+private int min(Node root) {
+
+        if (root.leftChild == null && root.rightChild == null)
+        return root.value;
+        if (root.leftChild != null && root.rightChild == null)
+        return Math.min(root.leftChild.value, root.value);
+        if (root.rightChild != null && root.leftChild == null)
+        return Math.min(root.rightChild.value, root.value);
+
+        var left = min(root.leftChild);
+        var right = min(root.rightChild);
+        return Math.min(Math.min(left, right), root.value);
+    }
+\end{minted}
+\section{Exercise:Equality Checking}
+这是一个判断两树相等的问题。解决这个问题还是使用递归即可。递归的循环逻辑非常简单，只需要判断每一个节点都是相等的，那么这棵树就是相等的。而递归的终止条件自然是空节点。
+\begin{minted}{java}
+public boolean equals(MikeTree other) {
+        if (other == null) return false;
+        return equals(root, other.root);
+    }
+
+private boolean equals(Node first, Node second) {
+        if (first == null && second == null) {
+                return true;
+            }
+        if (first != null && second != null) {
+                return first.value == second.value
+                && equals(first.leftChild, second.leftChild)
+                && equals(first.rightChild, second.rightChild);
+            }
+        return false;
+    }
+\end{minted}
+\section{Exercise:isBinarySearchTree}
+判断一棵树是否是二叉搜索树，虽然在我们构建的树已经是二叉搜索树了（当成一般的二叉树）。判断的要点自然是根据二叉搜索树的判断要点，根节点的值大于左节点，并且，根节点的值小于右节点，而且每一棵子树也要符合条件。所以肯定使用递归方法来进行判断。我们对每一个节点标注一个值范围，树根节点的范围是$(-\infty,+\infty)$。递归结束的终止条件也是遍历得到的节点为空。
+\begin{minted}{java}
+public boolean isBinarySearchTree() {
+        return isBinarySearchTree(root, Integer.MIN_VALUE,
+        Integer.MAX_VALUE);
+    }
+
+private boolean isBinarySearchTree(Node root, int min, int max) {
+        if (root == null) return true;
+        return root.value > min && root.value < max
+        && isBinarySearchTree(root.leftChild, min, root.value)
+        && isBinarySearchTree(root.rightChild, root.value, max);
+    }
+\end{minted}
+
+\section{Exercise: Node at K Distance}
+这个练习时寻找距离root节点K个单位的节点。递归持续的条件是：每一次转到下一个节点，distance都-1。递归结束的条件是:当distance为0的时候就得到了目标节点。
+\begin{minted}{java}
+public ArrayList<Integer> printNodesAtDistance(int distance) {
+        var list=new ArrayList<Integer>();
+        if(root==null){
+                return null;
+            }
+        printNodesAtDistance(root,distance,list);
+
+        return list;
+    }
+
+private void printNodesAtDistance(Node root,int distance,
+ArrayList<Integer>arrayList){
+        if(root==null) return;
+        if(distance==0) {
+
+                arrayList.add(root.value);
+                return;
+            }
+        printNodesAtDistance(root.leftChild,distance-1,arrayList);
+        printNodesAtDistance(root.rightChild,distance-1,arrayList);
+
+    }
+\end{minted}
+\section{Exercise:Level Traverse}
+在有之前的结论之后，我们进行广度优先遍历是比较简单的，首先利用高度函数获取高度，然后遍历打印出每一层高度的节点即可
+\begin{minted}{java}
+
+public void traverseLevelOrder(){
+
+for(var i=0;i<=height();i++){
+
+    for(var value: printNodesAtDistance(i)){
+        System.out.println("第"+i+"层"+value);
+    }
+}
+}
+\end{minted}
 \part{Part One Title}
 
-%----------------------------------------------------------------------------------------
-%	SECTIONING EXAMPLES CHAPTER
-%----------------------------------------------------------------------------------------
+
 
 \chapterimage{orange2.jpg} % Chapter heading image
 \chapterspaceabove{6.75cm} % Whitespace from the top of the page to the chapter title on chapter pages
@@ -728,8 +992,8 @@ This is an example of a remark.
 \begin{example} % Specify a name/title in square brackets, or leave them out for no title
     Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
     \begin{equation}
-        f(x)=\left\{\begin{aligned}                                                                                                                                                                                              & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
-                                                                                                                                                                                                             & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
+        f(x)=\left\{\begin{aligned}                                                                                                                                                                                                                                                                         & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
+                                                                                                                                                                                                                                                                                        & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
     \end{equation}
     The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\mathopen{]}0\,;5/2-\sqrt{2}\mathclose{[}$.
 \end{example}

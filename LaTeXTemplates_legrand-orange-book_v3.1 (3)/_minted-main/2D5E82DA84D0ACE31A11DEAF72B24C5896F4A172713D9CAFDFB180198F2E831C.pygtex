@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{int} \PYG{n+nf}{height}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+
+        \PYG{k}{return} \PYG{n}{height}\PYG{p}{(}\PYG{n}{root}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{k+kd}{private} \PYG{k+kt}{int} \PYG{n+nf}{height}\PYG{p}{(}\PYG{n}{Node} \PYG{n}{root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)} \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild} \PYG{o}{==} \PYG{k+kc}{null} \PYG{o}{\PYGZam{}\PYGZam{}}
+        \PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild} \PYG{o}{==} \PYG{k+kc}{null}\PYG{p}{)}
+        \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{k}{return} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{max}\PYG{p}{(}
+         \PYG{n}{height}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{leftChild}\PYG{p}{),}
+         \PYG{n}{height}\PYG{p}{(}\PYG{n}{root}\PYG{p}{.}\PYG{n+na}{rightChild}\PYG{p}{));}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
