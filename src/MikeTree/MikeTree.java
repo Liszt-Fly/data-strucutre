@@ -2,7 +2,7 @@ package MikeTree;
 
 import java.util.ArrayList;
 
-public class MikeBinarySearchTree {
+public class MikeTree {
     private Node root;
 
     private class Node {
@@ -117,7 +117,7 @@ public class MikeBinarySearchTree {
         return Math.min(Math.min(left, right), root.value);
     }
 
-    public boolean equals(MikeBinarySearchTree other) {
+    public boolean equals(MikeTree other) {
         if (other == null) return false;
         return equals(root, other.root);
     }

@@ -2,7 +2,7 @@ package MikeTree;
 
 public class Main {
     public static void main(String[] args) {
-        MikeBinarySearchTree mikeBinarySearchTree=new MikeBinarySearchTree();
+        MikeTree mikeBinarySearchTree=new MikeTree();
         mikeBinarySearchTree.insert(7);
         mikeBinarySearchTree.insert(4);
         mikeBinarySearchTree.insert(1);
@@ -13,7 +13,7 @@ public class Main {
         mikeBinarySearchTree.traverseInOrder();
         System.out.println(mikeBinarySearchTree.height());
         System.out.println("最小值为: "+mikeBinarySearchTree.min());
-        MikeBinarySearchTree mikeBinarySearchTree1=new MikeBinarySearchTree();
+        MikeTree mikeBinarySearchTree1=new MikeTree();
         mikeBinarySearchTree1.insert(7);
         mikeBinarySearchTree1.insert(4);
         mikeBinarySearchTree1.insert(1);
