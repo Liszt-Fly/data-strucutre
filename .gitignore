@@ -9,3 +9,4 @@
 *.gz
 *.bcf
 _minted-main/
+out/
