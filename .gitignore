@@ -10,3 +10,5 @@
 *.bcf
 _minted-main/
 out/
+.vscode/
+.idea/
